@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from . import github
+from .forms import VisitorContactForm
 
 def home(request):
     repos = github.get_repos()
@@ -11,10 +13,22 @@ def home(request):
         if len(git_data) == 8:
             break
     
+    if request.method == 'POST':
+        form = VisitorContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Thanks for Reaching out I will be contacting back soon!')
+            return redirect('home')
+        else:
+            messages.warning(request, f'Information entered is incorrect! Please try again.')
+    
+    else:
+        form = VisitorContactForm()
+    
     context ={
         'git_repos' : git_data,
+        'form': form,
     }
-
     return render(request, 'portfolio/index.html', context=context)
 
 def about(request):
