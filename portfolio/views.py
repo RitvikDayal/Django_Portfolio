@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import HttpResponse
 from . import github
 from .forms import VisitorContactForm
 
@@ -21,7 +22,6 @@ def home(request):
             return redirect('home')
         else:
             messages.warning(request, f'Information entered is incorrect! Please try again.')
-    
     else:
         form = VisitorContactForm()
     
@@ -29,6 +29,7 @@ def home(request):
         'git_repos' : git_data,
         'form': form,
     }
+
     return render(request, 'portfolio/index.html', context=context)
 
 def about(request):

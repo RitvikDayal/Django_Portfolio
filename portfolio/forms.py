@@ -1,6 +1,7 @@
 from django import forms
 from .models import Visitor
 from phonenumber_field.formfields import PhoneNumberField
+from .tasks import send_contact_message_task
 
 class VisitorContactForm(forms.ModelForm):
     full_name = forms.CharField(widget=forms.TextInput(attrs={
@@ -27,3 +28,12 @@ class VisitorContactForm(forms.ModelForm):
     class Meta:
         model = Visitor
         fields = '__all__'
+
+    def send_email(self):
+        send_contact_message_task.delay(
+            self.cleaned_data['full_name'], 
+            self.cleaned_data['email'], 
+            self.cleaned_data['phone_number'], 
+            self.cleaned_data['message']
+        )
+        
