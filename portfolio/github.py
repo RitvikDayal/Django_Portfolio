@@ -10,8 +10,26 @@ def filter_repo(repo):
         'url': repo['html_url'],
         'description': repo['description'],
         'stars': repo['stargazers_count'],
-        'created': repo['created_at'],
+        'created': repo['created_at']
     }
 
     return data
 
+def add_image(repos):
+
+    images = [
+        'covidtweetsanalysis.png',
+        'supportportal.png',
+        'thestoneshop.png',
+        'facerecognition.jpg',
+        'clickbait.jpg',
+        'Cdrgen.png',
+        'movierecommendation.jpeg',
+        'algorithms.png',
+    ]
+
+    for image, repo in zip(images, repos):
+        repo['image_file'] = 'portfolio/images/Projects/'+image,
+    
+    return repos
+    
