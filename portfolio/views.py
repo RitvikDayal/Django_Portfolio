@@ -9,7 +9,7 @@ def home(request):
     git_data = []
 
     for repo in repos:
-        if repo['stargazers_count'] > 0:
+        if repo['stargazers_count'] > 1:
             git_data.append(github.filter_repo(repo))
         if len(git_data) == 8:
             break

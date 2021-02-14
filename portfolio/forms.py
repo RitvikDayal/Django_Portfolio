@@ -1,6 +1,8 @@
 from django import forms
 from .models import Visitor
 from phonenumber_field.formfields import PhoneNumberField
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 from .tasks import send_contact_message_task
 
 class VisitorContactForm(forms.ModelForm):
@@ -24,6 +26,8 @@ class VisitorContactForm(forms.ModelForm):
         'placeholder': 'Message',
         'rows': 7,
     }))
+
+    captcha = ReCaptchaField(widget=ReCaptchaV3)
 
     class Meta:
         model = Visitor

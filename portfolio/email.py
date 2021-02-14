@@ -18,7 +18,7 @@ def send_contact_email(full_name, email, phone_number, message):
 
     email = EmailMessage(
         email_subject, email_body,
-        settings.DEFAULT_FROM_EMAIL, [email, ],
+        settings.DEFAULT_FROM_EMAIL, ['ritvikr1605@gmail.com', ],
     )
 
     return email.send(fail_silently=False)

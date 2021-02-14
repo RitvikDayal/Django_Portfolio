@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'portfolio.apps.PortfolioConfig',
     'phonenumber_field',
     'crispy_forms',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +121,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('USER_EMAIL')
 EMAIL_HOST_PASSWORD = os.environ.get('USER_EMAIL_PASSWORD')
 DEFAULT_FROM_EMAIL = os.environ.get('USER_EMAIL')
+
+RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+
+RECAPTCHA_DOMAIN = 'www.recaptcha.net'
