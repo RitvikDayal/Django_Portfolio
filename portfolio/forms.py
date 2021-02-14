@@ -9,7 +9,7 @@ class VisitorContactForm(forms.ModelForm):
             'placeholder': 'Full Name',
         }))
 
-    phone_number = PhoneNumberField(widget=forms.TextInput(attrs={
+    phone_number = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Phone Number',
     }))

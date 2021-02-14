@@ -18,6 +18,7 @@ def home(request):
         form = VisitorContactForm(request.POST)
         if form.is_valid():
             form.save()
+            form.send_email()
             messages.success(request, f'Thanks for Reaching out I will be contacting back soon!')
             return redirect('home')
         else:

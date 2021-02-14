@@ -1,7 +1,0 @@
-Name: {{name|safe}}
-
-Phone: {{phone|safe}}
-Email: {{email|safe}}
-
-Messsage: 
-{{message|safe}}

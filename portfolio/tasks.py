@@ -1,6 +1,8 @@
 from celery.decorators import task
 from celery.utils.log import get_task_logger
 
+from celery import shared_task
+
 from .email import send_contact_email
 
 logger = get_task_logger(__name__)
@@ -9,3 +11,7 @@ logger = get_task_logger(__name__)
 def send_contact_message_task(full_name, email, phone_number, message):
     logger.info("Sent Contact Email")
     return send_contact_email(full_name, email, phone_number, message)
+
+@shared_task
+def add(x, y):
+    return x + y
