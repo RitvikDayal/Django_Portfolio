@@ -2,8 +2,15 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+	
 		<div id="fh5co-main">
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-{{ message.tags }}">
+					{{ message }}
+				</div>
+			{% endfor %}
+		{% endif %}
 			<aside id="fh5co-hero" class="js-fullheight">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
@@ -50,7 +57,7 @@
 						<p>I am a native Hindi speaker with a proficiency in English. Pursuing a bachelor's degree in Computer Science from the Moradabad Institute of Technology, I have working experience with Django, HTML, Python, JavaScript and have a strong willingness to excel as a backend developer. Throughout my college life I have been an enterpriser which had helped me acquired skills like presentation, communication, leadership, meticulous. I have also been an active participant in cultural as well as technical event and have won a national hackathon (Smart India Hackathon – 2020).</p>
 						<p>Talking about my interest during free time I am a technophile and sociable person who also like e-sports and learning business.</p>
 						<br />
-						<a class="btn btn-primary" href="#">Know More ></a>
+						<a class="btn btn-primary" href="https://www.linkedin.com/signup/public-profile-join?vieweeVanityName=ritvik-dayal-374449163&trk=public_profile_top-card-primary-button-join-to-connect" target="_blank">Connect on Linkedin ></a>
 					</div>
 				</div>
 			</div>
@@ -135,13 +142,6 @@
 					<div class="col-md-4">
 						<h2>Get In Touch</h2>
 					</div>
-					{% if messages %}
-						{% for message in messages %}
-							<div class="alert alert-{{ message.tags }}">
-								{{ message }}
-							</div>
-						{% endfor %}
-					{% endif %}
 				</div>
 
 				<form method="POST" action="">

@@ -55,14 +55,14 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href="index.html">Ritvik Dayal</a></h1>
+			<h1 id="fh5co-logo"><a href="{% url 'home' %}">Ritvik Dayal</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li class="fh5co-active"><a href="index.html">Home</a></li>
+					<li class="fh5co-active"><a href="{% url 'home' %}">Home</a></li>
 					<li><a href="{% url 'resume_view' %}" target="_blank">Resume Preview</a></li>
-					<li><a href="blog.html">Projects</a></li>
-					<li><a href="portfolio.html">Blog</a></li>
-					<li><a href="about.html">About</a></li>
+					<li><a href="{% url 'projects' %}">Projects</a></li>
+					<li><a href="{% url 'blog' %}">Blog</a></li>
+					<li><a href="{% url 'contact' %}">Contact</a></li>
 				</ul>
 			</nav>
 

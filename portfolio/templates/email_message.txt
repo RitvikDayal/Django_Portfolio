@@ -3,7 +3,7 @@ Contact Form
 
 Name: {{full_name|safe}}
 
-Phone: {{phone|safe}}
+Phone: {{phone_number|safe}}
 Email: {{email|safe}}
 
 Messsage: 

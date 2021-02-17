@@ -43,11 +43,39 @@ def resume_view(request):
     except FileNotFoundError:
         raise Http404()
 
-def about(request):
-    return render(request, 'portfolio/about.html')
+def projetcs(request):
+    repos = github.get_repos()
+    git_data = []
 
-def portfolio(request):
-    return render(request, 'portfolio/portfolio.html')
+    for repo in repos:
+        git_data.append(github.filter_repo(repo))
+    
+    print(len(git_data))
+
+    context={
+        'projects': git_data,
+    }
+
+    return render(request, 'portfolio/projects.html', context=context)
+
+def blog(request):
+    return render(request, 'portfolio/blog.html')
 
 def contact(request):
-    return render(request, 'portfolio/contact.html')
+
+    if request.method == 'POST':
+        form = VisitorContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            form.send_email()
+            messages.success(request, f'Thanks for Reaching out I will be contacting back soon!')
+            return redirect('contact')
+        else:
+            messages.warning(request, f'Information entered is incorrect! Please try again.')
+    else:
+        form = VisitorContactForm()
+
+    return render(request, 'portfolio/contact.html', context={'form': form})
+
+def error404(request, exception):
+    return render(request, 'portfolio/error_404.html')
